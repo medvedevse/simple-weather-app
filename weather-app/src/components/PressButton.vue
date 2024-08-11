@@ -10,7 +10,7 @@ defineProps<{
 
 <style>
 .btn {
-  border: 1px solid black;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
   background-color: #1aab7a;
@@ -18,6 +18,6 @@ defineProps<{
   font-weight: bold;
 }
 .active {
-  background-color: #659079;
+  background-color: #4edb90;
 }
 </style>
