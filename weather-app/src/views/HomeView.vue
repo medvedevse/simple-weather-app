@@ -5,11 +5,11 @@ import Weather from '../components/Weather.vue';
 
 <template>
   <main>
-    <div class='home'>
+    <div class="home">
       <div class="header-wrapper">
-        <Header title='Weather Info' />
-      <img src='../assets/logo.svg' alt='Logo' width='50' height='50' />
-    </div> 
+        <Header title="Weather Info" />
+        <img src="../assets/logo.svg" alt="Logo" width="50" height="50" />
+      </div>
       <Weather />
     </div>
   </main>
@@ -30,6 +30,8 @@ import Weather from '../components/Weather.vue';
 
 .header-wrapper {
   display: flex;
-  margin-bottom: 10px;
+    img {
+      align-self: center;
+    }
 }
 </style>
