@@ -23,8 +23,8 @@ defineEmits(['get-сity']);
   margin-bottom: 15px;
 
   input {
-    width: 215px;
-    min-width: 170px;
+    width: 100%;
+    min-width: 215px;
     font-size: 15px;
     border-radius: 5px;
   }
