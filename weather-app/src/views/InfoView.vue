@@ -1,12 +1,14 @@
-<script setup lang='ts'>
-  import Header from '../components/PageHeader.vue';
-  import CurrencyOutput from '../components/CurrencyOutput.vue';
-
+<script setup lang="ts">
+import Header from '../components/PageHeader.vue';
+import CurrencyOutput from '../components/CurrencyOutput.vue';
 </script>
 
 <template>
   <div class="info">
-    <Header title='Currency Info'/>
+    <div class="info-header-wrapper">
+      <Header title="Currency Info" />
+      <img src="../assets/currency.svg" alt="Currency icon" width="40" height="40" />
+    </div>
     <CurrencyOutput />
   </div>
 </template>
@@ -15,6 +17,14 @@
 @media (min-width: 1024px) {
   .info {
     min-height: 100vh;
+  }
+}
+
+.info-header-wrapper {
+  display: flex;
+  gap: 10px;
+  img {
+    align-self: center;
   }
 }
 </style>

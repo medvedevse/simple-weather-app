@@ -8,7 +8,7 @@ import Weather from '../components/Weather.vue';
     <div class="home">
       <div class="header-wrapper">
         <Header title="Weather Info" />
-        <img src="../assets/logo.svg" alt="Logo" width="50" height="50" />
+        <img src="../assets/weather.svg" alt="Weather icon" width="50" height="50" />
       </div>
       <Weather />
     </div>
@@ -30,8 +30,8 @@ import Weather from '../components/Weather.vue';
 
 .header-wrapper {
   display: flex;
-    img {
-      align-self: center;
-    }
+  img {
+    align-self: center;
+  }
 }
 </style>
