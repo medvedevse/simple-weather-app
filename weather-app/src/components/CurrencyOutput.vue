@@ -55,21 +55,11 @@ currencyStore.getCurrencies();
         v-if="currencyStore.activeTab === 2 && currencyStore.cryptoCurrencyData"
         class="crypto-currency-data"
       >
-        <div class="btc">
-          {{ currencyStore.cryptoCurrencyData[0].name }}:
-          {{ Number(currencyStore.cryptoCurrencyData[0].price_usd).toFixed(2) }}$
+      <div v-for="coin in currencyStore.cryptoCurrencyData" :key="coin.id">
+        <div class="coin">
+          {{ coin.name }}:
+          {{ Number(coin.price_usd).toFixed(2) }}$
         </div>
-        <div class="eth">
-          {{ currencyStore.cryptoCurrencyData[1].name }}:
-          {{ Number(currencyStore.cryptoCurrencyData[1].price_usd).toFixed(2) }}$
-        </div>
-        <div class="ton">
-          {{ currencyStore.cryptoCurrencyData[2].name }}:
-          {{ Number(currencyStore.cryptoCurrencyData[2].price_usd).toFixed(2) }}$
-        </div>
-        <div class="xmr">
-          {{ currencyStore.cryptoCurrencyData[3].name }}:
-          {{ Number(currencyStore.cryptoCurrencyData[3].price_usd).toFixed(2) }}$
         </div>
       </div>
     </div>

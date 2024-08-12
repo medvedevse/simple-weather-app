@@ -29,18 +29,27 @@ interface CurrencyData {
 
 interface CryptoCurrencyData {
   0: {
+    id: string;
     name: string;
     price_usd: string;
   };
   1: {
+    id: string;
     name: string;
     price_usd: string;
   };
   2: {
+    id: string;
     name: string;
     price_usd: string;
   };
   3: {
+    id: string;
+    name: string;
+    price_usd: string;
+  };
+  4: {
+    id: string;
     name: string;
     price_usd: string;
   };
@@ -62,7 +71,12 @@ export const useCurrencyStore = defineStore('currencyStore', {
         this.currencyData.Date = new Date(data.Date).toLocaleDateString();
 
         const { data: crypto } = await axios.get(
-          `https://api.coinlore.net/api/ticker/?id=90,80,54683,28`
+          `https://api.coinlore.net/api/ticker/`,
+          {
+            params: {
+              id: '90,80,54683,28,130947'
+            }
+          }
         );
         this.cryptoCurrencyData = crypto;
       } catch (err) {
