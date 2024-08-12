@@ -24,7 +24,7 @@ defineEmits(['get-сity']);
 
   input {
     width: 100%;
-    min-width: 120px;
+    min-width: 170px;
     font-size: 15px;
     border-radius: 5px;
   }
