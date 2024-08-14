@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Header from '../components/PageHeader.vue';
-import Weather from '../components/Weather.vue';
+import Weather from '../components/WeatherOutput.vue';
 </script>
 
 <template>

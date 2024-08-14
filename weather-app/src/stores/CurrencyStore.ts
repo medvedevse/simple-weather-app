@@ -70,14 +70,11 @@ export const useCurrencyStore = defineStore('currencyStore', {
         this.currencyData = data;
         this.currencyData.Date = new Date(data.Date).toLocaleDateString();
 
-        const { data: crypto } = await axios.get(
-          `https://api.coinlore.net/api/ticker/`,
-          {
-            params: {
-              id: '90,80,54683,28,130947'
-            }
+        const { data: crypto } = await axios.get(`https://api.coinlore.net/api/ticker/`, {
+          params: {
+            id: '90,80,54683,28,130947'
           }
-        );
+        });
         this.cryptoCurrencyData = crypto;
       } catch (err) {
         alert(`Возникла ошибка: ${err}`);
