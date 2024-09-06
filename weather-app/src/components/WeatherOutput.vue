@@ -99,7 +99,7 @@ const weatherStore = useWeatherStore();
     gap: 15px;
   }
 
-  .current-day-container {
+  .current-day-container:first-child {
     border: 1px solid #16a776;
     border-radius: 10px;
     padding: 2px; 
