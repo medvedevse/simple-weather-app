@@ -7,16 +7,24 @@ interface WeatherData {
   narrative: string;
 }
 
+interface CurrentWeatherData {
+  temperature: string;
+  temperatureFeelsLike: string;
+}
+
 export const useWeatherStore = defineStore('weatherStore', {
   state: () => ({
     opencCageDataKey: 'db44e76644d44a60b5e3756b38fa0142',
     wundergroundKey: '9447a132b3234f4287a132b3232f429d',
+    // брал ключ ниже на https://www.wunderground.com/ через devtools по поиску current
+    currentWeatherKey: 'e1f10a1e78da46f5b10a1e78da96f525',
     isLoading: false,
     weatherData: {} as WeatherData,
     cityInfo: '',
     address: '',
     geo: {} as { lat: string; lon: string },
-    emptyCityName: ''
+    emptyCityName: '',
+    currentWeatherData: {} as CurrentWeatherData
   }),
   actions: {
     async getCity() {
@@ -58,6 +66,21 @@ export const useWeatherStore = defineStore('weatherStore', {
           }
         );
         this.weatherData = weather;
+
+        const { data: currentWeatherData } = await axios.get(
+          `https://api.weather.com/v3/wx/observations/current`,
+          {
+            params: {
+              geocode: `${this.geo.lat},${this.geo.lon}`,
+              apiKey: this.currentWeatherKey,
+              format: 'json',
+              units: 'm',
+              language: 'ru-RU'
+            }
+          }
+        );
+        this.currentWeatherData = currentWeatherData;
+        console.log(this.currentWeatherData);
       } catch (err) {
         alert(`Возникла ошибка: ${err}`);
       } finally {

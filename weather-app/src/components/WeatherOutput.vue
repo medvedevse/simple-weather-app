@@ -18,14 +18,28 @@ const weatherStore = useWeatherStore();
     <div v-if="weatherStore.cityInfo" class="weather-city-data">
       <div class="wrapper">
         <div class="current-day">Сегодня:</div>
-        <OutputItem
-          :item="`Днем: ${weatherStore.weatherData.calendarDayTemperatureMax[0]}°C`"
-          :class="['temperature']"
-        />
-        <OutputItem
-          :item="`Ночью: ${weatherStore.weatherData.calendarDayTemperatureMin[0]}°C`"
-          :class="['night-temperature']"
-        />
+        <div class="current-day-wrapper">
+          <div class="current-day-container">
+            <OutputItem
+              :item="`Сейчас: ${weatherStore.currentWeatherData.temperature}°C `"
+              :class="['current-temperature']"
+            />
+            <OutputItem
+              :item="`Ощущается: ${weatherStore.currentWeatherData.temperatureFeelsLike}°C`"
+              :class="['feels-like']"
+            />
+          </div>
+          <div class="current-day-container">
+            <OutputItem
+              :item="`Днем: ${weatherStore.weatherData.calendarDayTemperatureMax[0]}°C`"
+              :class="['temperature']"
+            />
+            <OutputItem
+              :item="`Ночью: ${weatherStore.weatherData.calendarDayTemperatureMin[0]}°C`"
+              :class="['night-temperature']"
+            />
+          </div>
+        </div>
         <OutputItem :item="weatherStore.weatherData.narrative[0]" :class="['description']" />
       </div>
       <div class="wrapper">
@@ -71,6 +85,15 @@ const weatherStore = useWeatherStore();
     border-radius: 15px;
     padding: 5px;
     margin-bottom: 5px;
+  }
+  .current-day-wrapper {
+    display: flex;
+  }
+  .current-day-container:first-child {
+    border: 1px solid #16a776;
+    border-radius: 10px;
+    padding: 2px;
+    margin-right: 15px;
   }
 }
 </style>
