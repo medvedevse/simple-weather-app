@@ -60,6 +60,7 @@ const weatherStore = useWeatherStore();
 .weather-data {
   .city {
     color: #16a776;
+    margin-bottom: 5px;
   }
   .current-day {
     font-weight: bold;
