@@ -8,38 +8,44 @@ const weatherStore = useWeatherStore();
 </script>
 
 <template>
-  <WeatherForm v-model="weatherStore.city" @get-сity="weatherStore.getCity" />
+  <WeatherForm v-model="weatherStore.address" @get-сity="weatherStore.getCity" />
   <Loading v-if="weatherStore.isLoading" />
   <div v-else class="weather-data">
     <OutputItem
-      :item="
-        weatherStore.weatherData.name
-          ? `Город: ${weatherStore.weatherData.name}`
-          : weatherStore.emptyCityName
-      "
+      :item="weatherStore.cityInfo ? `Город: ${weatherStore.cityInfo}` : weatherStore.emptyCityName"
       :class="['city']"
     />
-    <div v-if="weatherStore.weatherData.name" class="weather-city-data">
+    <div v-if="weatherStore.cityInfo" class="weather-city-data">
+      <div class="current-day">Сегодня:</div>
       <OutputItem
-        :item="`Температура: ${Math.round(Number(weatherStore.weatherData.main.temp))}°C`"
+        :item="`Днем: ${weatherStore.weatherData.calendarDayTemperatureMax[0]}°C`"
         :class="['temperature']"
       />
       <OutputItem
-        :item="`Ощущается: ${Math.round(Number(weatherStore.weatherData.main.feels_like))}°C`"
-        :class="['feels-like']"
+        :item="`Ночью: ${weatherStore.weatherData.calendarDayTemperatureMin[0]}°C`"
+        :class="['night-temperature']"
+      />
+      <OutputItem :item="weatherStore.weatherData.narrative[0]" :class="['description']" />
+      <div class="current-day">Завтра:</div>
+      <OutputItem
+        :item="`Днем: ${weatherStore.weatherData.calendarDayTemperatureMax[1]}°C`"
+        :class="['temperature']"
       />
       <OutputItem
-        :item="`Влажность: ${Math.round(Number(weatherStore.weatherData.main.humidity))}%`"
-        :class="['humidity']"
+        :item="`Ночью: ${weatherStore.weatherData.calendarDayTemperatureMin[1]}°C`"
+        :class="['night-temperature']"
+      />
+      <OutputItem :item="weatherStore.weatherData.narrative[1]" :class="['description']" />
+      <div class="current-day">Послезавтра:</div>
+      <OutputItem
+        :item="`Днем: ${weatherStore.weatherData.calendarDayTemperatureMax[2]}°C`"
+        :class="['temperature']"
       />
       <OutputItem
-        :item="`Облачность: ${weatherStore.weatherData.weather[0].description}`"
-        :class="['description']"
+        :item="`Ночью: ${weatherStore.weatherData.calendarDayTemperatureMin[2]}°C`"
+        :class="['night-temperature']"
       />
-      <OutputItem
-        :item="`Ветер: ${Math.round(Number(weatherStore.weatherData.wind.speed))}м/c`"
-        :class="['wind']"
-      />
+      <OutputItem :item="weatherStore.weatherData.narrative[2]" :class="['description']" />
     </div>
   </div>
 </template>
@@ -48,6 +54,9 @@ const weatherStore = useWeatherStore();
 .weather-data {
   .city {
     color: #16a776;
+  }
+  .current-day {
+    font-weight: bold;
   }
 }
 </style>

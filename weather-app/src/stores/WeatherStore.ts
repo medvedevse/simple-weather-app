@@ -2,28 +2,19 @@ import { defineStore } from 'pinia';
 import axios from 'axios';
 
 interface WeatherData {
-  name: string;
-  main: {
-    temp: string;
-    feels_like: string;
-    humidity: string;
-  };
-  weather: {
-    0: {
-      description: string;
-    };
-  };
-  wind: {
-    speed: string;
-  };
+  calendarDayTemperatureMax: string;
+  calendarDayTemperatureMin: string;
+  narrative: string;
 }
 
 export const useWeatherStore = defineStore('weatherStore', {
   state: () => ({
-    key: 'ae829a076a4da54216d00041c8e44ff7',
+    opencCageDataKey: 'db44e76644d44a60b5e3756b38fa0142',
+    wundergroundKey: '9447a132b3234f4287a132b3232f429d',
     isLoading: false,
     weatherData: {} as WeatherData,
-    city: '',
+    cityInfo: '',
+    address: '',
     geo: {} as { lat: string; lon: string },
     emptyCityName: ''
   }),
@@ -31,36 +22,38 @@ export const useWeatherStore = defineStore('weatherStore', {
     async getCity() {
       this.isLoading = true;
       try {
-        if (!this.city) {
+        if (!this.address) {
           this.weatherData = {} as WeatherData;
           this.emptyCityName = 'Пожалуйста, введите город';
           return;
         }
-        const { data } = await axios.get(`https://api.openweathermap.org/geo/1.0/direct`, {
+        const { data } = await axios.get(`https://api.opencagedata.com/geocode/v1/json`, {
           params: {
-            q: this.city,
-            limit: 1,
-            appid: this.key
+            q: this.address,
+            key: this.opencCageDataKey
           }
         });
-        if (!data.length) {
+        if (!data.results.length) {
+          this.cityInfo = '';
           this.weatherData = {} as WeatherData;
           this.emptyCityName = 'Город не найден';
           return;
         }
         this.geo = {
-          lat: data[0].lat,
-          lon: data[0].lon
+          lat: data.results[0].geometry.lat,
+          lon: data.results[0].geometry.lng
         };
+        this.cityInfo = data.results[0].formatted;
+
         const { data: weather } = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather`,
+          `https://api.weather.com/v3/wx/forecast/daily/5day`,
           {
             params: {
-              lat: this.geo.lat,
-              lon: this.geo.lon,
-              appid: this.key,
-              units: 'metric',
-              lang: 'ru'
+              geocode: `${this.geo.lat},${this.geo.lon}`,
+              apiKey: this.wundergroundKey,
+              format: 'json',
+              units: 'm', // еще можно s и h для цельсия
+              language: 'ru-RU'
             }
           }
         );

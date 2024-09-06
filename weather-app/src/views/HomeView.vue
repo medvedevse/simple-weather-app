@@ -22,12 +22,6 @@ import Weather from '../components/WeatherOutput.vue';
   }
 }
 
-@media (max-width: 1024px) {
-  .home {
-    min-width: 500px;
-  }
-}
-
 .header-wrapper {
   display: flex;
   img {
