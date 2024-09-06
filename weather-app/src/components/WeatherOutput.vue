@@ -101,15 +101,13 @@ const weatherStore = useWeatherStore();
   .current-day-wrapper {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 5px 15px;
   }
 
   .current-day-container:first-child {
     border: 1px solid #16a776;
     border-radius: 10px;
-    padding: 2px; 
-    padding-right: 5px;
-    padding-left: 5px;
+    padding: 2px 5px;
   }
 }
 </style>
