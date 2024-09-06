@@ -46,7 +46,7 @@ const weatherStore = useWeatherStore();
         </div>
       </div>
       <div class="wrapper">
-        <div class="current-day">Завтра:</div>
+        <div class="tomorrow-day">Завтра:</div>
         <OutputItem
           :item="`Днем: ${weatherStore.weatherData.calendarDayTemperatureMax[1]}°C`"
           :class="['temperature']"
@@ -58,7 +58,7 @@ const weatherStore = useWeatherStore();
         <OutputItem :item="weatherStore.weatherData.narrative[1]" :class="['description']" />
       </div>
       <div class="wrapper">
-        <div class="current-day">Послезавтра:</div>
+        <div class="after-tomorrow">Послезавтра:</div>
         <OutputItem
           :item="`Днем: ${weatherStore.weatherData.calendarDayTemperatureMax[2]}°C`"
           :class="['temperature']"
@@ -80,8 +80,13 @@ const weatherStore = useWeatherStore();
     margin-bottom: 5px;
   }
 
-  .current-day {
+  .current-day,
+  .tomorrow-day,
+  .after-tomorrow {
     font-weight: bold;
+  }
+
+  .current-day {
     margin-bottom: 5px;
   }
 
