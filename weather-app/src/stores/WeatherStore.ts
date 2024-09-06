@@ -33,7 +33,7 @@ export const useWeatherStore = defineStore('weatherStore', {
     async getCity() {
       this.isLoading = true;
       try {
-        if (!this.address) {
+        if (!this.address || this.address.length === 1) {
           this.weatherData = {} as WeatherData;
           this.emptyCityName = 'Пожалуйста, введите город';
           return;

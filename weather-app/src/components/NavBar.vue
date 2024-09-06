@@ -4,8 +4,8 @@ import { RouterLink } from 'vue-router';
 
 <template>
   <nav>
-    <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="/info">Currency</RouterLink>
+    <RouterLink to="/">Главная</RouterLink>
+    <RouterLink to="/info">Курс валюты</RouterLink>
   </nav>
 </template>
 

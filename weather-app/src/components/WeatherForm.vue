@@ -8,8 +8,8 @@ defineEmits(['get-сity']);
 <template>
   <section class="weather-section">
     <form @submit.prevent="" class="weather-form">
-      <input type="text" v-model="model" placeholder="Enter city name" />
-      <PressButton text="Press" @click="$emit('get-сity')" />
+      <input type="text" v-model="model" placeholder="Введите местоположение" />
+      <PressButton text="Поиск" @click="$emit('get-сity')" />
     </form>
   </section>
 </template>

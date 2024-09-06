@@ -1,27 +1,15 @@
 <script setup lang="ts">
 import Loading from './LoadingComponent.vue';
-import PressButton from './PressButton.vue';
 import { useCurrencyStore } from '../stores/CurrencyStore';
 import OutputItem from './OutputItem.vue';
+import TabBar from '../components/TabBar.vue';
 
 const currencyStore = useCurrencyStore();
 currencyStore.getCurrencies();
 </script>
 
 <template>
-  <div class="tabs">
-    <PressButton
-      text="Currency"
-      :class="{ active: currencyStore.activeTab === 1 }"
-      @click="currencyStore.setActiveTab(1)"
-    />
-    <PressButton
-      text="Crypto Currency"
-      :class="{ active: currencyStore.activeTab === 2 }"
-      @click="currencyStore.setActiveTab(2)"
-    />
-  </div>
-
+  <TabBar />
   <Loading v-if="currencyStore.isLoading" />
   <div v-else>
     <OutputItem
@@ -78,11 +66,5 @@ currencyStore.getCurrencies();
 
 .current-date {
   font-weight: bold;
-}
-
-.tabs {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
 }
 </style>
