@@ -10,6 +10,9 @@ interface WeatherData {
 interface CurrentWeatherData {
   temperature: string;
   temperatureFeelsLike: string;
+  relativeHumidity: string;
+  windSpeed: string;
+  wxPhraseLong: string;
 }
 
 export const useWeatherStore = defineStore('weatherStore', {
@@ -80,7 +83,6 @@ export const useWeatherStore = defineStore('weatherStore', {
           }
         );
         this.currentWeatherData = currentWeatherData;
-        console.log(this.currentWeatherData);
       } catch (err) {
         alert(`Возникла ошибка: ${err}`);
       } finally {
