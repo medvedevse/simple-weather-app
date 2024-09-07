@@ -69,7 +69,14 @@ export const useCurrencyStore = defineStore('currencyStore', {
         const { data } = await axios.get(`https://www.cbr-xml-daily.ru/daily_json.js`);
         this.currencyData = data;
         this.currencyData.Date = new Date(data.Date).toLocaleDateString();
-
+      } catch (err) {
+        alert(`Возникла ошибка: ${err}`);
+      } finally {
+        this.isLoading = false;
+      }
+    },
+    async getCryptoCurrencies() {
+      try {
         const { data: crypto } = await axios.get(`https://api.coinlore.net/api/ticker/`, {
           params: {
             id: '90,80,54683,28,130947'
@@ -78,11 +85,10 @@ export const useCurrencyStore = defineStore('currencyStore', {
         this.cryptoCurrencyData = crypto;
       } catch (err) {
         alert(`Возникла ошибка: ${err}`);
-      } finally {
-        this.isLoading = false;
       }
     },
     setActiveTab(id: number) {
+      id === 1 ? this.getCurrencies() : this.getCryptoCurrencies();
       this.activeTab = id;
     }
   }

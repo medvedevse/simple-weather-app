@@ -6,6 +6,7 @@ import TabBar from '../components/TabBar.vue';
 
 const currencyStore = useCurrencyStore();
 currencyStore.getCurrencies();
+currencyStore.getCryptoCurrencies();
 </script>
 
 <template>

@@ -8,7 +8,7 @@ const weatherStore = useWeatherStore();
 </script>
 
 <template>
-  <WeatherForm v-model="weatherStore.address" @get-сity="weatherStore.getCity" />
+  <WeatherForm v-model="weatherStore.address" @get-сity="weatherStore.getForecast" />
   <Loading v-if="weatherStore.isLoading" />
   <div v-else class="weather-data">
     <div>
@@ -29,7 +29,7 @@ const weatherStore = useWeatherStore();
             Сегодня: <span>{{ weatherStore.currentWeatherData.wxPhraseLong }}</span>
           </div>
           <div class="current-day-wrapper">
-            <div class="current-day-container" v-if='weatherStore.currentWeatherData.temperature'>
+            <div class="current-day-container" v-if="weatherStore.currentWeatherData.temperature">
               <OutputItem
                 :item="`Сейчас: ${weatherStore.currentWeatherData.temperature}°C `"
                 :class="['current-temperature']"
@@ -49,7 +49,10 @@ const weatherStore = useWeatherStore();
                 :class="['night-temperature']"
               />
             </div>
-            <div class="current-day-container" v-if='weatherStore.currentWeatherData.relativeHumidity'>
+            <div
+              class="current-day-container"
+              v-if="weatherStore.currentWeatherData.relativeHumidity"
+            >
               <OutputItem
                 :item="`Влажность: ${weatherStore.currentWeatherData.relativeHumidity}%`"
                 :class="['humidity']"

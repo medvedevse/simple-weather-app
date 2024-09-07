@@ -55,7 +55,13 @@ export const useWeatherStore = defineStore('weatherStore', {
           lon: data.results[0].geometry.lng
         };
         this.cityInfo = data.results[0].formatted;
-
+      } catch (err) {
+        alert(`Возникла ошибка: ${err}`);
+      }
+    },
+    async getForecast() {
+      await this.getCity();
+      try {
         const { data: weather } = await axios.get(
           `https://api.weather.com/v3/wx/forecast/daily/5day`,
           {
@@ -69,7 +75,15 @@ export const useWeatherStore = defineStore('weatherStore', {
           }
         );
         this.weatherData = weather;
-
+        await this.getCurrentForecast();
+      } catch (err) {
+        alert(`Возникла ошибка: ${err}`);
+      } finally {
+        this.isLoading = false;
+      }
+    },
+    async getCurrentForecast() {
+      try {
         const { data: currentWeatherData } = await axios.get(
           `https://api.weather.com/v3/wx/observations/current`,
           {
@@ -79,18 +93,12 @@ export const useWeatherStore = defineStore('weatherStore', {
               format: 'json',
               units: 'm',
               language: 'ru-RU'
-            },
-            headers: {
-              'content-type': 'application/json',
-              'accept': 'application/json'
             }
           }
         );
         this.currentWeatherData = currentWeatherData;
       } catch (err) {
         alert(`Возникла ошибка: ${err}`);
-      } finally {
-        this.isLoading = false;
       }
     }
   }
