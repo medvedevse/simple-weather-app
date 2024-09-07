@@ -29,7 +29,7 @@ const weatherStore = useWeatherStore();
             Сегодня: <span>{{ weatherStore.currentWeatherData.wxPhraseLong }}</span>
           </div>
           <div class="current-day-wrapper">
-            <div class="current-day-container">
+            <div class="current-day-container" v-if='weatherStore.currentWeatherData.temperature'>
               <OutputItem
                 :item="`Сейчас: ${weatherStore.currentWeatherData.temperature}°C `"
                 :class="['current-temperature']"
@@ -49,7 +49,7 @@ const weatherStore = useWeatherStore();
                 :class="['night-temperature']"
               />
             </div>
-            <div class="current-day-container">
+            <div class="current-day-container" v-if='weatherStore.currentWeatherData.relativeHumidity'>
               <OutputItem
                 :item="`Влажность: ${weatherStore.currentWeatherData.relativeHumidity}%`"
                 :class="['humidity']"
