@@ -71,7 +71,7 @@ export const useWeatherStore = defineStore('weatherStore', {
         this.weatherData = weather;
 
         const { data: currentWeatherData } = await axios.get(
-          `http://api.weather.com/v3/wx/observations/current`,
+          `https://api.weather.com/v3/wx/observations/current`,
           {
             params: {
               geocode: `${this.geo.lat},${this.geo.lon}`,
@@ -79,6 +79,10 @@ export const useWeatherStore = defineStore('weatherStore', {
               format: 'json',
               units: 'm',
               language: 'ru-RU'
+            },
+            headers: {
+              Accept: 'application/json',
+              'content-type': 'application/json'
             }
           }
         );
