@@ -81,8 +81,8 @@ export const useWeatherStore = defineStore('weatherStore', {
               language: 'ru-RU'
             },
             headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
+              'content-type': 'application/json',
+              'accept': 'application/json'
             }
           }
         );
