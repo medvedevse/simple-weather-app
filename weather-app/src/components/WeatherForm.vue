@@ -1,15 +1,22 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import PressButton from './PressButton.vue';
 
 const model = defineModel();
-defineEmits(['get-сity']);
+defineEmits(['get-forecast']);
+
+const isValidLocation = computed(() => {
+  const pattern = /^[a-zA-Zа-яА-Я\s]+$/;
+  let value = model.value as string;
+  return pattern.test(value) || value.trim().length == 0;
+});
 </script>
 
 <template>
   <section class="weather-section">
     <form @submit.prevent="" class="weather-form">
       <input type="text" v-model="model" placeholder="Введите местоположение" />
-      <PressButton text="Поиск" @click="$emit('get-сity')" />
+      <PressButton text="Поиск" @click="$emit('get-forecast')" :disabled="!isValidLocation" />
     </form>
   </section>
 </template>

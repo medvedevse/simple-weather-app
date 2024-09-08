@@ -8,7 +8,7 @@ const weatherStore = useWeatherStore();
 </script>
 
 <template>
-  <WeatherForm v-model="weatherStore.address" @get-сity="weatherStore.getForecast" />
+  <WeatherForm v-model="weatherStore.address" @get-forecast="weatherStore.getCity" />
   <Loading v-if="weatherStore.isLoading" />
   <div v-else class="weather-data">
     <div>

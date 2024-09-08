@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
+import createProxyCurrentForecast from '../utils/CurrentWeatherProxy.js';
 
 interface WeatherData {
   calendarDayTemperatureMax: string;
@@ -55,12 +56,13 @@ export const useWeatherStore = defineStore('weatherStore', {
           lon: data.results[0].geometry.lng
         };
         this.cityInfo = data.results[0].formatted;
+        await this.getForecast();
+        await this.getCurrentForecast();
       } catch (err) {
         alert(`Возникла ошибка: ${err}`);
       }
     },
     async getForecast() {
-      await this.getCity();
       try {
         const { data: weather } = await axios.get(
           `https://api.weather.com/v3/wx/forecast/daily/5day`,
@@ -75,7 +77,6 @@ export const useWeatherStore = defineStore('weatherStore', {
           }
         );
         this.weatherData = weather;
-        await this.getCurrentForecast();
       } catch (err) {
         alert(`Возникла ошибка: ${err}`);
       } finally {
@@ -98,7 +99,8 @@ export const useWeatherStore = defineStore('weatherStore', {
         );
         this.currentWeatherData = currentWeatherData;
       } catch (err) {
-        alert(`Возникла ошибка: ${err}`);
+        console.log(`Возникла ошибка: ${err}`);
+        this.currentWeatherData = (await createProxyCurrentForecast()) as CurrentWeatherData;
       }
     }
   }
