@@ -96,7 +96,7 @@ const clickOutsideSuggests = () => (isActive.value = false);
   border-radius: 5px;
   .popular {
     background: rgb(221, 226, 230);
-    padding: 3px 7px;
+    /* padding: 3px 7px; */
   }
   li {
     padding: 3px;

@@ -106,10 +106,9 @@ export const useWeatherStore = defineStore('weatherStore', {
     },
     addInput(input: string) {
       if (input && !this.locations.includes(input)) {
-        this.locations.push(input);
+        this.locations.unshift(input);
         if (this.locations.length > 3) {
-          // Ограничиваем количество хранимых значений
-          this.locations.shift();
+          this.locations.pop();
         }
       }
     }
