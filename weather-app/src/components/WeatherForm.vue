@@ -61,7 +61,7 @@ const clickOutsideSuggests = () => (isActive.value = false);
     </form>
     <div ref="suggestsWrapper" class="suggests-wrapper" :class="{ show: isActive }">
       <ul class="weather-form-suggests">
-        <div class="popular">Популярное</div>
+        <li class="popular">Популярное</li>
         <li v-for="input in store.locations" :key="input">
           <a @click="clickSuggest(input)">{{ input }}</a>
         </li>
@@ -94,10 +94,6 @@ const clickOutsideSuggests = () => (isActive.value = false);
   min-width: 200px;
   border: 1px solid black;
   border-radius: 5px;
-  .popular {
-    background: rgb(221, 226, 230);
-    padding: 3px 7px;
-  }
   li {
     padding: 3px;
   }
@@ -106,6 +102,12 @@ const clickOutsideSuggests = () => (isActive.value = false);
     cursor: pointer;
   }
 }
+
+.weather-form-suggests .popular {
+  background: rgb(221, 226, 230);
+  padding: 3px 7px;
+}
+
 .weather-form {
   display: flex;
   gap: 10px;
