@@ -99,6 +99,7 @@ const clickOutsideSuggests = () => (isActive.value = false);
     padding: 3px;
   }
   a {
+    display: block;
     color: black;
     cursor: pointer;
   }
