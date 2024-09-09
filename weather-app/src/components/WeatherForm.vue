@@ -61,7 +61,7 @@ const clickOutsideSuggests = () => (isActive.value = false);
     </form>
     <div ref="suggestsWrapper" class="suggests-wrapper" :class="{ show: isActive }">
       <ul class="weather-form-suggests">
-        <li class="popular">Популярное</li>
+        <div class="popular">Популярное</div>
         <li v-for="input in store.locations" :key="input">
           <a @click="clickSuggest(input)">{{ input }}</a>
         </li>
@@ -96,7 +96,7 @@ const clickOutsideSuggests = () => (isActive.value = false);
   border-radius: 5px;
   .popular {
     background: rgb(221, 226, 230);
-    /* padding: 3px 7px; */
+    padding: 3px 7px;
   }
   li {
     padding: 3px;
