@@ -14,12 +14,6 @@ import CurrencyOutput from '../components/CurrencyOutput.vue';
 </template>
 
 <style>
-@media (min-width: 1024px) {
-  .info {
-    min-height: 100vh;
-  }
-}
-
 .info-header-wrapper {
   display: flex;
   gap: 10px;

@@ -16,12 +16,6 @@ import Weather from '../components/WeatherOutput.vue';
 </template>
 
 <style>
-@media (min-width: 1024px) {
-  .home {
-    min-height: 100vh;
-  }
-}
-
 .header-wrapper {
   display: flex;
   img {
