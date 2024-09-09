@@ -82,7 +82,6 @@ const clickOutsideSuggests = () => (isActive.value = false);
 }
 
 .weather-form-suggests {
-  font-family: 'Roboto', sans-serif;
   overflow: hidden;
   list-style: none;
   padding: 0;
@@ -96,6 +95,7 @@ const clickOutsideSuggests = () => (isActive.value = false);
   border: 1px solid black;
   border-radius: 5px;
   li {
+    color: black;
     padding: 3px;
   }
   a {
