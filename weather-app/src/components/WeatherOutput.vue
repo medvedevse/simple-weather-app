@@ -57,7 +57,7 @@ const weatherStore = useWeatherStore();
                 :item="`Влажность: ${weatherStore.currentWeatherData.relativeHumidity}%`"
                 :class="['humidity']"
               />
-              <OutputItem
+              <OutputItem v-if='Number(weatherStore.currentWeatherData.windSpeed) > 0'
                 :item="`Ветер: ${weatherStore.currentWeatherData.windSpeed}м/c`"
                 :class="['wind']"
               />
