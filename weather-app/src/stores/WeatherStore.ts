@@ -28,7 +28,8 @@ export const useWeatherStore = defineStore('weatherStore', {
     address: '',
     geo: {} as { lat: string; lon: string },
     emptyCityName: '',
-    currentWeatherData: {} as CurrentWeatherData
+    currentWeatherData: {} as CurrentWeatherData,
+    locations: ['Энгельс', 'Энгельс Степное', 'Саратов'] as string[]
   }),
   actions: {
     async getCity() {
@@ -101,6 +102,15 @@ export const useWeatherStore = defineStore('weatherStore', {
       } catch (err) {
         console.log(`Возникла ошибка: ${err}`);
         this.currentWeatherData = (await createProxyCurrentForecast()) as CurrentWeatherData;
+      }
+    },
+    addInput(input: string) {
+      if (input && !this.locations.includes(input)) {
+        this.locations.push(input);
+        if (this.locations.length > 3) {
+          // Ограничиваем количество хранимых значений
+          this.locations.shift();
+        }
       }
     }
   }
