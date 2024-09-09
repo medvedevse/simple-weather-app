@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import Loading from './LoadingComponent.vue';
 import WeatherForm from './WeatherForm.vue';
 import { useWeatherStore } from '../stores/WeatherStore';
 import OutputItem from './OutputItem.vue';
+import WeatherLoader from './WeatherLoader.vue';
 
 const weatherStore = useWeatherStore();
 </script>
 
 <template>
   <WeatherForm v-model="weatherStore.address" @get-forecast="weatherStore.getCity" />
-  <Loading v-if="weatherStore.isLoading" />
+  <WeatherLoader v-if="weatherStore.isLoading" />
   <div v-else class="weather-data">
     <div>
       <OutputItem

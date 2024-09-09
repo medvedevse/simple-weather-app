@@ -32,7 +32,7 @@ const isValidLocation = computed(() => {
   gap: 10px;
   width: 30%;
   height: 30px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 
   input {
     width: 100%;
