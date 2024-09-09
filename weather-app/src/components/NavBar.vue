@@ -4,14 +4,14 @@ import { RouterLink } from 'vue-router';
 
 <template>
   <nav>
-    <RouterLink to="/">Главная</RouterLink>
-    <RouterLink to="/info">Курс валюты</RouterLink>
+    <RouterLink to="/" class="nav-link">Главная</RouterLink>
+    <RouterLink to="/info" class="nav-link">Курс валюты</RouterLink>
   </nav>
 </template>
 
 <style scoped>
 nav {
   display: flex;
-  gap: 10px;
+  gap: 5px;
 }
 </style>

@@ -17,6 +17,15 @@ defineProps<{
   padding: 5px;
   font-weight: bold;
 }
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btn:active {
+  opacity: 0.7;
+}
+
 .active {
   background-color: #4edb90;
 }

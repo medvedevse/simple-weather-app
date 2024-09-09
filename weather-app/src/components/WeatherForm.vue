@@ -16,7 +16,12 @@ const isValidLocation = computed(() => {
   <section class="weather-section">
     <form @submit.prevent="" class="weather-form">
       <input type="text" v-model="model" placeholder="Введите местоположение" />
-      <PressButton text="Поиск" @click="$emit('get-forecast')" :disabled="!isValidLocation" />
+      <PressButton
+        text="Поиск"
+        @click="$emit('get-forecast')"
+        :disabled="!isValidLocation"
+        class="weather-form-button"
+      />
     </form>
   </section>
 </template>
@@ -34,6 +39,11 @@ const isValidLocation = computed(() => {
     min-width: 215px;
     font-size: 15px;
     border-radius: 5px;
+  }
+
+  .weather-form-button {
+    width: 100px;
+    height: 29px;
   }
 }
 </style>

@@ -32,13 +32,13 @@ export const useWeatherStore = defineStore('weatherStore', {
   }),
   actions: {
     async getCity() {
-      this.isLoading = true;
       try {
         if (!this.address || this.address.length === 1) {
           this.weatherData = {} as WeatherData;
           this.emptyCityName = 'Пожалуйста, введите город';
           return;
         }
+        this.isLoading = true;
         const { data } = await axios.get(`https://api.opencagedata.com/geocode/v1/json`, {
           params: {
             q: this.address,
