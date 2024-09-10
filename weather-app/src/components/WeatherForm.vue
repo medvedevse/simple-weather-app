@@ -50,7 +50,7 @@ const clickOutsideSuggests = () => (isActive.value = false);
         v-on-click-outside="clickOutsideSuggests"
       />
       <PressButton
-        text="Поиск"
+        text="Найти"
         @click="
           $emit('get-forecast');
           handleInput();
@@ -127,6 +127,8 @@ const clickOutsideSuggests = () => (isActive.value = false);
   .weather-form-button {
     width: 100px;
     height: 29px;
+    color: white;
+    letter-spacing: 0.2px;
   }
 }
 </style>

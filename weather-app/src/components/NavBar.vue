@@ -13,5 +13,8 @@ import { RouterLink } from 'vue-router';
 nav {
   display: flex;
   gap: 5px;
+  .nav-link{
+    border-radius: 3px;
+  }
 }
 </style>
