@@ -255,7 +255,7 @@ path {
   margin-left: -43px;
   font-weight: bold;
   margin-top: 20px;
-  font-size: 11px;
+  font-size: 15px;
   color: #a0a0a0;
   width: 200px;
 }
