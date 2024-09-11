@@ -29,7 +29,7 @@ export const useWeatherStore = defineStore('weatherStore', {
     geo: {} as { lat: string; lon: string },
     emptyCityName: '',
     currentWeatherData: {} as CurrentWeatherData,
-    locations: ['Энгельс', 'Энгельс Степное', 'Саратов'] as string[]
+    locations: ['Энгельс', 'Энгельс, Степное', 'Саратов'] as string[]
   }),
   actions: {
     async getCity() {

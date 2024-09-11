@@ -1,4 +1,4 @@
-// https://dashboard.scraperapi.com/apiplayground - 5000 запросов/месяц
+// https://dashboard.scraperapi.com/apiplayground - 1000 запросов/месяц
 import { useWeatherStore } from '../stores/WeatherStore';
 
 const scraperapiApiKey = 'e895bf9dd111cb1f8ac955499951db86';
