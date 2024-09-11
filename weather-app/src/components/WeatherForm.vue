@@ -10,7 +10,7 @@ const isActive = ref(false);
 defineEmits(['get-forecast']);
 
 const isValidLocation = computed(() => {
-  const pattern = /^[a-zA-Zа-яА-Яё\s-,.()]+$/;
+  const pattern = /^[a-zA-Zа-яА-Яё\s-,.()]+[a-zA-Zа-яА-Яё]+$/;
   let value = model.value as string;
   return pattern.test(value) || value.trim().length == 0;
 });
