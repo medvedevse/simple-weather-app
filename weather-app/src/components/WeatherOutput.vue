@@ -153,10 +153,11 @@ const weatherStore = useWeatherStore();
   .current-day-wrapper-1{
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   .current-day-badge {
     border: 1px solid #16a776;
-    border-radius: 6px;
-    padding: 2px 5px;
+    border-radius: 5px;
+    padding: 1px 4px;
   }
 }
 
@@ -166,7 +167,11 @@ const weatherStore = useWeatherStore();
     font-weight: bold;
   }
 
-  .current-day {
+  .current-day:first-child {
+    margin-bottom: 2px;
+  }
+
+  .current-day:not(:first-child) {
     margin-bottom: 5px;
   }
 
