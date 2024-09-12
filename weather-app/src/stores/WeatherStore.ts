@@ -79,7 +79,6 @@ export const useWeatherStore = defineStore('weatherStore', {
           }
         );
         this.weatherData = weather;
-        console.log(this.weatherData);
       } catch (err) {
         alert(`Возникла ошибка: ${err}`);
       } finally {

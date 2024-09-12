@@ -25,9 +25,13 @@ const weatherStore = useWeatherStore();
         class="weather-city-data"
       >
         <div class="wrapper">
+          <div class="current-day-wrapper-1">
           <div class="current-day">
-            Сегодня({{ weatherStore.weatherData.dayOfWeek[0] }}): <br><span>{{ weatherStore.currentWeatherData.wxPhraseLong }}</span>
+            {{ weatherStore.weatherData.dayOfWeek[0] }}
           </div>
+          <div class="current-day-badge">Сегодня</div>
+          </div>
+          <div>Сейчас: {{ weatherStore.currentWeatherData.wxPhraseLong }}</div>
           <div class="current-day-wrapper">
             <div class="current-day-container" v-if="weatherStore.currentWeatherData.temperature">
               <OutputItem
@@ -68,7 +72,7 @@ const weatherStore = useWeatherStore();
           </div>
         </div>
         <div class="wrapper">
-          <div class="tomorrow-day">{{ weatherStore.weatherData.dayOfWeek[1] }}:</div>
+          <div class="tomorrow-day">{{ weatherStore.weatherData.dayOfWeek[1] }}</div>
           <OutputItem
             :item="`Днем: ${weatherStore.weatherData.calendarDayTemperatureMax[1]}°C`"
             :class="['temperature']"
@@ -80,7 +84,7 @@ const weatherStore = useWeatherStore();
           <OutputItem :item="weatherStore.weatherData.narrative[1]" :class="['description']" />
         </div>
         <div class="wrapper">
-          <div class="after-tomorrow">{{ weatherStore.weatherData.dayOfWeek[2] }}:</div>
+          <div class="after-tomorrow">{{ weatherStore.weatherData.dayOfWeek[2] }}</div>
           <OutputItem
             :item="`Днем: ${weatherStore.weatherData.calendarDayTemperatureMax[2]}°C`"
             :class="['temperature']"
@@ -92,7 +96,7 @@ const weatherStore = useWeatherStore();
           <OutputItem :item="weatherStore.weatherData.narrative[2]" :class="['description']" />
         </div>
         <div class="wrapper">
-          <div class="after-tomorrow">{{ weatherStore.weatherData.dayOfWeek[3] }}:</div>
+          <div class="after-tomorrow">{{ weatherStore.weatherData.dayOfWeek[3] }}</div>
           <OutputItem
             :item="`Днем: ${weatherStore.weatherData.calendarDayTemperatureMax[3]}°C`"
             :class="['temperature']"
@@ -104,7 +108,7 @@ const weatherStore = useWeatherStore();
           <OutputItem :item="weatherStore.weatherData.narrative[3]" :class="['description']" />
         </div>
         <div class="wrapper">
-          <div class="after-tomorrow">{{ weatherStore.weatherData.dayOfWeek[4] }}:</div>
+          <div class="after-tomorrow">{{ weatherStore.weatherData.dayOfWeek[4] }}</div>
           <OutputItem
             :item="`Днем: ${weatherStore.weatherData.calendarDayTemperatureMax[4]}°C`"
             :class="['temperature']"
@@ -116,7 +120,7 @@ const weatherStore = useWeatherStore();
           <OutputItem :item="weatherStore.weatherData.narrative[5]" :class="['description']" />
         </div>
         <div class="wrapper">
-          <div class="after-tomorrow">{{ weatherStore.weatherData.dayOfWeek[5] }}:</div>
+          <div class="after-tomorrow">{{ weatherStore.weatherData.dayOfWeek[5] }}</div>
           <OutputItem
             :item="`Днем: ${weatherStore.weatherData.calendarDayTemperatureMax[5]}°C`"
             :class="['temperature']"
@@ -146,6 +150,17 @@ const weatherStore = useWeatherStore();
 }
 }
 
+  .current-day-wrapper-1{
+  display: flex;
+  justify-content: space-between;
+  .current-day-badge {
+    background-color: #EBF7FF;
+    border: 1px solid #16a776;
+    border-radius: 10px;
+    padding: 2px 5px;
+  }
+}
+
   .current-day,
   .tomorrow-day,
   .after-tomorrow {
@@ -171,6 +186,7 @@ const weatherStore = useWeatherStore();
   }
 
   .current-day-container:first-child {
+    background-color: #EBF7FF;
     border: 1px solid #16a776;
     border-radius: 10px;
     padding: 2px 5px;
