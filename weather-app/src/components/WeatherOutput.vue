@@ -155,7 +155,7 @@ const weatherStore = useWeatherStore();
   justify-content: space-between;
   .current-day-badge {
     border: 1px solid #16a776;
-    border-radius: 10px;
+    border-radius: 6px;
     padding: 2px 5px;
   }
 }
