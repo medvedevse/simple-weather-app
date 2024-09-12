@@ -115,7 +115,7 @@ const clickOutsideSuggests = () => (isActive.value = false);
   gap: 10px;
   width: 30%;
   height: 30px;
-  margin-bottom: 10px;
+  margin-bottom: 7px;
 
   input {
     width: 100%;

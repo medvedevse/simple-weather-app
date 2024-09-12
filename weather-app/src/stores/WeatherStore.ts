@@ -3,9 +3,10 @@ import axios from 'axios';
 import createProxyCurrentForecast from '../utils/CurrentWeatherProxy.js';
 
 interface WeatherData {
-  calendarDayTemperatureMax: string;
-  calendarDayTemperatureMin: string;
-  narrative: string;
+  calendarDayTemperatureMax: string[];
+  calendarDayTemperatureMin: string[];
+  narrative: string[];
+  dayOfWeek: string[];
 }
 
 interface CurrentWeatherData {
@@ -78,6 +79,7 @@ export const useWeatherStore = defineStore('weatherStore', {
           }
         );
         this.weatherData = weather;
+        console.log(this.weatherData);
       } catch (err) {
         alert(`Возникла ошибка: ${err}`);
       } finally {
