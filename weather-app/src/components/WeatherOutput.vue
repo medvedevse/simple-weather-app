@@ -154,8 +154,6 @@ const weatherStore = useWeatherStore();
   display: flex;
   justify-content: space-between;
   .current-day-badge {
-    color: black;
-    background-color: #EBF7FF;
     border: 1px solid #16a776;
     border-radius: 10px;
     padding: 2px 5px;
@@ -187,8 +185,6 @@ const weatherStore = useWeatherStore();
   }
 
   .current-day-container:first-child {
-    color: black;
-    background-color: #EBF7FF;
     border: 1px solid #16a776;
     border-radius: 10px;
     padding: 2px 5px;
