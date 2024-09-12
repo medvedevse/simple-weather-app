@@ -26,12 +26,14 @@ const weatherStore = useWeatherStore();
       >
         <div class="wrapper">
           <div class="current-day-wrapper-1">
-          <div class="current-day">
-            {{ weatherStore.weatherData.dayOfWeek[0] }}
+            <div class="current-day">
+              {{ weatherStore.weatherData.dayOfWeek[0] }}
+            </div>
+            <div class="current-day-badge">Сегодня</div>
           </div>
-          <div class="current-day-badge">Сегодня</div>
+          <div class="current-day-description">
+            Сейчас: {{ weatherStore.currentWeatherData.wxPhraseLong }}
           </div>
-          <div>Сейчас: {{ weatherStore.currentWeatherData.wxPhraseLong }}</div>
           <div class="current-day-wrapper">
             <div class="current-day-container" v-if="weatherStore.currentWeatherData.temperature">
               <OutputItem
@@ -72,7 +74,7 @@ const weatherStore = useWeatherStore();
           </div>
         </div>
         <div class="wrapper">
-          <div class="tomorrow-day">{{ weatherStore.weatherData.dayOfWeek[1] }}</div>
+          <div class="next-day">{{ weatherStore.weatherData.dayOfWeek[1] }}</div>
           <OutputItem
             :item="`Днем: ${weatherStore.weatherData.calendarDayTemperatureMax[1]}°C`"
             :class="['temperature']"
@@ -84,7 +86,7 @@ const weatherStore = useWeatherStore();
           <OutputItem :item="weatherStore.weatherData.narrative[1]" :class="['description']" />
         </div>
         <div class="wrapper">
-          <div class="after-tomorrow">{{ weatherStore.weatherData.dayOfWeek[2] }}</div>
+          <div class="next-day">{{ weatherStore.weatherData.dayOfWeek[2] }}</div>
           <OutputItem
             :item="`Днем: ${weatherStore.weatherData.calendarDayTemperatureMax[2]}°C`"
             :class="['temperature']"
@@ -96,7 +98,7 @@ const weatherStore = useWeatherStore();
           <OutputItem :item="weatherStore.weatherData.narrative[2]" :class="['description']" />
         </div>
         <div class="wrapper">
-          <div class="after-tomorrow">{{ weatherStore.weatherData.dayOfWeek[3] }}</div>
+          <div class="next-day">{{ weatherStore.weatherData.dayOfWeek[3] }}</div>
           <OutputItem
             :item="`Днем: ${weatherStore.weatherData.calendarDayTemperatureMax[3]}°C`"
             :class="['temperature']"
@@ -108,7 +110,7 @@ const weatherStore = useWeatherStore();
           <OutputItem :item="weatherStore.weatherData.narrative[3]" :class="['description']" />
         </div>
         <div class="wrapper">
-          <div class="after-tomorrow">{{ weatherStore.weatherData.dayOfWeek[4] }}</div>
+          <div class="next-day">{{ weatherStore.weatherData.dayOfWeek[4] }}</div>
           <OutputItem
             :item="`Днем: ${weatherStore.weatherData.calendarDayTemperatureMax[4]}°C`"
             :class="['temperature']"
@@ -120,7 +122,7 @@ const weatherStore = useWeatherStore();
           <OutputItem :item="weatherStore.weatherData.narrative[5]" :class="['description']" />
         </div>
         <div class="wrapper">
-          <div class="after-tomorrow">{{ weatherStore.weatherData.dayOfWeek[5] }}</div>
+          <div class="next-day">{{ weatherStore.weatherData.dayOfWeek[5] }}</div>
           <OutputItem
             :item="`Днем: ${weatherStore.weatherData.calendarDayTemperatureMax[5]}°C`"
             :class="['temperature']"
@@ -131,9 +133,9 @@ const weatherStore = useWeatherStore();
           />
           <OutputItem :item="weatherStore.weatherData.narrative[5]" :class="['description']" />
         </div>
-        </div>
-        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <style>
@@ -142,37 +144,33 @@ const weatherStore = useWeatherStore();
     margin-bottom: 5px;
   }
 
-@media (min-width: 1024px) {
-  .weather-city-data{
-  display: grid;
-  grid-template-columns: 500px 500px;
-  column-gap: 15px;
-}
-}
-
-  .current-day-wrapper-1{
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  .current-day-badge {
-    border: 1px solid #16a776;
-    border-radius: 5px;
-    padding: 1px 4px;
+  @media (min-width: 1024px) {
+    .weather-city-data {
+      display: grid;
+      grid-template-columns: 500px 500px;
+      column-gap: 15px;
+    }
   }
-}
+
+  .current-day-wrapper-1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    .current-day-badge {
+      border: 1px solid #16a776;
+      border-radius: 5px;
+      padding: 1px 4px;
+    }
+  }
 
   .current-day,
-  .tomorrow-day,
-  .after-tomorrow {
+  .next-day {
     font-weight: bold;
   }
 
-  .current-day:first-child {
+  .current-day,
+  .current-day-description {
     margin-bottom: 2px;
-  }
-
-  .current-day:not(:first-child) {
-    margin-bottom: 5px;
   }
 
   .wrapper {
