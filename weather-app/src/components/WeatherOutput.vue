@@ -179,6 +179,9 @@ const weatherStore = useWeatherStore();
     border-radius: 15px;
     padding: 10px;
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .current-day-wrapper {
