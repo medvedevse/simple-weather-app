@@ -24,7 +24,6 @@ const weatherStore = useWeatherStore();
         v-if="weatherStore.cityInfo && weatherStore.weatherData.calendarDayTemperatureMax"
         class="weather-city-data"
       >
-      <div class="weather-city-data-1">
         <div class="wrapper">
           <div class="current-day-wrapper-1">
             <div class="current-day">
@@ -98,8 +97,6 @@ const weatherStore = useWeatherStore();
           />
           <OutputItem :item="weatherStore.weatherData.narrative[2]" :class="['description']" />
         </div>
-        </div>
-        <div class="weather-city-data-2">
         <div class="wrapper">
           <div class="next-day">{{ weatherStore.weatherData.dayOfWeek[3] }}</div>
           <OutputItem
@@ -136,7 +133,6 @@ const weatherStore = useWeatherStore();
           />
           <OutputItem :item="weatherStore.weatherData.narrative[5]" :class="['description']" />
         </div>
-        </div>
       </div>
     </div>
   </div>
@@ -154,12 +150,6 @@ const weatherStore = useWeatherStore();
       grid-template-columns: 500px 500px;
       column-gap: 12px;
     }
-
-    .weather-city-data-2{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
   }
 
   .current-day-wrapper-1 {
